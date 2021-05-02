@@ -4,7 +4,7 @@ from flask import Flask, request
 TARGET_WORDS = ["바카라", "카지노", "이용약관"]
 app = Flask("checkPageAPI")
 
-ADDR = "https://www.naver.com"
+ADDR = "https://bit.ly/334DlJS"
 
 
 def main():
