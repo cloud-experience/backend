@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-TARGET = ["바카라", "카지노", "이용약관"]
-
 
 def conn(URL):
     r = requests.get(URL)
@@ -19,17 +17,17 @@ def extractString(data):
     return words
 
 
-def checkString(words):
+def checkString(words, TARGET_WORDS):
     count = 0
     for word in words:
-        if word.string in TARGET:
+        if word.string in TARGET_WORDS:
             count += 1
         # print(f"{word.string} : {count}")
     return count
 
 
-def checkPage(URL):
+def checkPage(URL, TARGET_WORDS):
     data = conn(URL)
     words = extractString(data)
-    count = checkString(words)
+    count = checkString(words, TARGET_WORDS)
     return count
