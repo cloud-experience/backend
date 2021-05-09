@@ -26,7 +26,7 @@ api = Api(app)
 
 @api.route("/")
 class test(Resource):
-    def response(self):
+    def get(self):
         return {"spam": True}
 
 
