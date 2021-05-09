@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 def unshortenURL(URL):
     print(f"원본 URL : {URL}")
+    URL = f"https://{URL}"
     session = requests.Session()  # so connections are recycled
     r = session.head(URL, allow_redirects=True)
     return r.url
@@ -39,4 +40,5 @@ def checkPage(URL, TARGET_WORDS):
     data = conn(URL)
     words = extractString(data)
     count = checkString(words, TARGET_WORDS)
-    return count
+    data = {"redirectedURL": URL, "Count": count}
+    return data

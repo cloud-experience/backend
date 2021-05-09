@@ -24,10 +24,11 @@ api = Api(app)
 #     return str(count)
 
 
-@api.route("/check")
+@api.route("/check/<string:url>")
 class main(Resource):
-    def get(self):
-        return {"spam": "check"}
+    def get(self, url):
+        data = checkPage(url, TARGET_WORDS)
+        return data
 
 
 app.run(host="0.0.0.0", port=6000)
