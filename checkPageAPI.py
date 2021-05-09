@@ -24,10 +24,10 @@ api = Api(app)
 #     return str(count)
 
 
-@api.route("/")
-class test(Resource):
+@api.route("/check")
+class main(Resource):
     def get(self):
-        return {"spam": True}
+        return {"spam": "check"}
 
 
-app.run(host="localhost", port=6000)
+app.run(host="0.0.0.0", port=6000)
