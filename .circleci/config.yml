@@ -8,7 +8,7 @@ jobs:
   deploy:
     executor: aws-cli/default
     steps:
-      - run: zip * app.zip
+      - run: zip -r ./* app.zip
       - run: pwd
       - run: ls
       - checkout
