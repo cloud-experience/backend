@@ -5,6 +5,9 @@ files:
     destination: /home/ec2-user/app
     overwrite: yes
 hooks:
+  BeforeInstall:
+    - location: remove-before-install.sh
+      timeout: 30
   AfterInstall:
     - location: execute-deploy.sh
-      timeout: 300
+      timeout: 30
