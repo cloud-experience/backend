@@ -27,7 +27,7 @@ api = Api(app)
 @api.route("/check/<string:url1>/<string:url2>")
 class main(Resource):
     def get(self, url1, url2):
-        url = url1+url2
+        url = f'{url1}/{url2}'
         data = checkPage(url, TARGET_WORDS)
         return data
 
