@@ -32,7 +32,7 @@ workflows:
             - deploy-step1
           application-name: nuspam-api
           bundle-bucket: nuspam-static
-          bundle-key: app.zip
+          bundle-key: app
           deployment-group: api-server
           service-role-arn: arn:aws:iam::737382971423:role/Role_for_codedeploy
           filters:
