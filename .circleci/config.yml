@@ -5,10 +5,10 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.1
 
 jobs:
-  deploy:
+  deploy-step1:
     executor: aws-cli/default
     steps:
-      - run: zip -r ./* app.zip
+      - run: zip -r app.zip ./*
       - run: pwd
       - run: ls
       - checkout
@@ -25,8 +25,10 @@ jobs:
 workflows:
   deploy_application:
     jobs:
-      - deploy
+      - deploy-step1
       - aws-code-deploy/deploy:
+          requires:
+            - deploy-step1
           application-name: nuspam-api
           bundle-bucket: nuspam-static
           bundle-key: app.zip
