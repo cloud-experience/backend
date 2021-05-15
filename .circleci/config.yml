@@ -16,16 +16,16 @@ jobs:
           paths:
             - .
       - run: zip -r app.zip . -i ./*
-      - run: pwd
-      - run: ls
+      - run: mkdir deploy
+      - run: cd deploy
       - aws-s3/sync:
           aws-region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          from: ./app.zip
+          from: .
           to: "s3://nuspam-static/backend/"
       - aws-s3/copy:
-          from: ./app.zip
+          from: .
           to: "s3://nuspam-static/backend/"
 
 workflows:
