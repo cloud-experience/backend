@@ -11,6 +11,7 @@ jobs:
       - run: ls
       - checkout
       - aws-s3/sync:
+          arguments: --acl public-read
           aws-region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
