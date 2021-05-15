@@ -1,0 +1,22 @@
+version: "2.1"
+orbs:
+  aws-code-deploy: circleci/aws-code-deploy@2.0.0
+
+jobs:
+  deploy-ec2:
+    executor: aws-cli/default
+    steps:
+      - checkout
+
+workflows:
+  deploy_application:
+    jobs:
+      - aws-code-deploy/deploy:
+          application-name: nuspam-api
+          bundle-bucket: nuspam-static
+          bundle-key: app.zip
+          deployment-group: api-server
+          service-role-arn: arn:aws:iam::737382971423:role/Role_for_codedeploy
+          filters:
+            branches:
+              only: main
