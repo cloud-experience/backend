@@ -1,9 +1,11 @@
 version: "2.1"
 orbs:
   aws-code-deploy: circleci/aws-code-deploy@2.0.0
+  aws-s3: circleci/aws-s3@2.0
+  aws-cli: circleci/aws-cli@1.3.1
 
 jobs:
-  deploy-codedeploy:
+  deploy:
     executor: aws-cli/default
     steps:
       - run: zip * app.zip
@@ -23,6 +25,7 @@ jobs:
 workflows:
   deploy_application:
     jobs:
+      - deploy
       - aws-code-deploy/deploy:
           application-name: nuspam-api
           bundle-bucket: nuspam-static
