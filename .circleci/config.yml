@@ -8,10 +8,16 @@ jobs:
   deploy-step1:
     executor: aws-cli/default
     steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
       - run: zip -r app.zip . -i ./*
       - run: pwd
       - run: ls
-      - checkout
       - aws-s3/sync:
           aws-region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
