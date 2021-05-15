@@ -3,11 +3,23 @@ orbs:
   aws-code-deploy: circleci/aws-code-deploy@2.0.0
 
 jobs:
-  deploy-ec2:
+  deploy-codedeploy:
     executor: aws-cli/default
     steps:
+      - run: zip * app.zip
+      - run: pwd
+      - run: ls
       - checkout
-      
+      - aws-s3/sync:
+          from: .
+          to: "s3://nuspam-static/backend/"
+          aws-region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+      - aws-s3/copy:
+          from: ./app.zip
+          to: "s3://nuspam-static/backend/"
+
 workflows:
   deploy_application:
     jobs:
