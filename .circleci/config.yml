@@ -18,6 +18,7 @@ jobs:
           from: .
           to: "s3://nuspam-static/backend/"
       - aws-s3/copy:
+          arguments: "--dryrun"
           from: ./app.zip
           to: "s3://nuspam-static/backend/"
 
