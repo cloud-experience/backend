@@ -7,7 +7,7 @@ jobs:
     executor: aws-cli/default
     steps:
       - checkout
-
+      
 workflows:
   deploy_application:
     jobs:
