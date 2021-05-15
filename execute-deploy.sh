@@ -1,3 +1,3 @@
 #!/bin/bash
-kill $(pgrep -f flask)
+sudo kill $(pgrep -f python3)
 python3 /home/ec2-user/app/checkPageAPI.py
