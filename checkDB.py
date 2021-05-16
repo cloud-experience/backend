@@ -28,3 +28,9 @@ def newDB(url, count):
     cur = conn.cursor()
     cur.execute(f"INSERT INTO {RDS_TABLE}(url,word_count) VALUES ({url},{count})")
     conn.commit()
+
+
+def updateDB(url):
+    cur = conn.cursor()
+    cur.excute(f"UPDATE table SET date = GETDATE() where url = %s", url)
+    conn.commit()

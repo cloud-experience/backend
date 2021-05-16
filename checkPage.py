@@ -44,13 +44,13 @@ def checkPage(URL, TARGET_WORDS):
         words = extractString(data)
         count = checkString(words, TARGET_WORDS)
         try:
-            newDB(URL, count)
+            newDB("'" + URL + "'", count)
         except:
             print("DB작성 에러")
         data = {
             "redirectedURL": URL,
             "Count": count,
-            "first_data": "",
+            "first_data": "FIRST DISCOVERED",
             "last_data": "",
         }
     else:  # DB에 데이터가 존재하는 경우
