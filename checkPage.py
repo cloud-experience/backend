@@ -57,7 +57,7 @@ def checkPage(URL, TARGET_WORDS):
         data = {
             "redirectedURL": DBdata[0][0],
             "Count": DBdata[0][1],
-            "first_data": DBdata[0][2],
-            "last_data": DBdata[0][3],
+            "first_data": DBdata[0][2].isoformat(),
+            "last_data": DBdata[0][3].isoformat(),
         }
     return data
