@@ -25,7 +25,7 @@ def searchDB(url):
     return result
 
 
-def newDB(url, count):
+def newData(url, count):
     cur = conn.cursor()
     cur.execute(f"INSERT INTO {RDS_TABLE}(url,word_count) VALUES ({url},{count})")
     conn.commit()
@@ -35,5 +35,6 @@ def newDB(url, count):
 def updateDB(url):
     cur = conn.cursor()
     cur.execute(f"UPDATE spamlist SET last_date = NOW() WHERE url = %s", url)
+    cur.execute(f"UPDATE spamlist SET hits = hits+1 WHERE url = %s", url)
     conn.commit()
     cur.close()
