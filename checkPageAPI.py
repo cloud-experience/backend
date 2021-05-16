@@ -3,7 +3,6 @@ from flask import Flask, request
 from flask_restx import Api, Resource
 
 TARGET_WORDS = ["바카라", "카지노", "이용약관"]
-ADDR = "https://bit.ly/334DlJS"
 
 
 app = Flask("checkPageAPI")

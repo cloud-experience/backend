@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from checkDB import searchDB, newDB
+from checkDB import searchDB, newDB, updateDB
 
 
 def unshortenURL(URL):
@@ -54,6 +54,7 @@ def checkPage(URL, TARGET_WORDS):
             "last_data": "",
         }
     else:  # DB에 데이터가 존재하는 경우
+        updateDB(URL)
         data = {
             "redirectedURL": DBdata[0][0],
             "Count": DBdata[0][1],

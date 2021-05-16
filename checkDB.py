@@ -34,6 +34,6 @@ def newDB(url, count):
 
 def updateDB(url):
     cur = conn.cursor()
-    cur.excute(f"UPDATE table SET date = GETDATE() where url = %s", url)
+    cur.execute(f"UPDATE spamlist SET last_date = NOW() WHERE url = %s", url)
     conn.commit()
     cur.close()
