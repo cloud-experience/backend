@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from checkDB import searchDB, newDB
 
 
 def unshortenURL(URL):
@@ -37,8 +38,26 @@ def checkString(words, TARGET_WORDS):
 
 def checkPage(URL, TARGET_WORDS):
     URL = unshortenURL(URL)
-    data = conn(URL)
-    words = extractString(data)
-    count = checkString(words, TARGET_WORDS)
-    data = {"redirectedURL": URL, "Count": count}
+    DBdata = searchDB(URL)
+    if DBdata == ():  # DB에 저장된 데이터가 없으면(최초검색)
+        data = conn(URL)
+        words = extractString(data)
+        count = checkString(words, TARGET_WORDS)
+        try:
+            newDB(URL, count)
+        except:
+            print("DB작성 에러")
+        data = {
+            "redirectedURL": URL,
+            "Count": count,
+            "first_data": "",
+            "last_data": "",
+        }
+    else:  # DB에 데이터가 존재하는 경우
+        data = {
+            "redirectedURL": DBdata[0][0],
+            "Count": DBdata[0][1],
+            "first_data": DBdata[0][2],
+            "last_data": DBdata[0][3],
+        }
     return data
