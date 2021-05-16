@@ -21,6 +21,7 @@ def searchDB(url):
     cur = conn.cursor()
     cur.execute(f"SELECT * FROM {RDS_TABLE} WHERE url = %s", url)
     result = cur.fetchall()
+    cur.close()
     return result
 
 
@@ -28,9 +29,11 @@ def newDB(url, count):
     cur = conn.cursor()
     cur.execute(f"INSERT INTO {RDS_TABLE}(url,word_count) VALUES ({url},{count})")
     conn.commit()
+    cur.close()
 
 
 def updateDB(url):
     cur = conn.cursor()
     cur.excute(f"UPDATE table SET date = GETDATE() where url = %s", url)
     conn.commit()
+    cur.close()
