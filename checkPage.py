@@ -54,7 +54,7 @@ def checkPage(URL, TARGET_WORDS):
             "last_data": "",
         }
     else:  # DB에 데이터가 존재하는 경우
-        updateDB(URL)
+        updateDB(URL)  # 마지막 조회 날짜 업데이트
         data = {
             "redirectedURL": DBdata[0][0],
             "Count": DBdata[0][1],
