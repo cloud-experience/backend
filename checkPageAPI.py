@@ -1,12 +1,14 @@
 from checkPage import checkPage
 from flask import Flask, request
 from flask_restx import Api, Resource
+from flask_cors import CORS, cross_origin
 
 TARGET_WORDS = ["바카라", "카지노", "이용약관"]
 
 
 app = Flask("checkPageAPI")
 api = Api(app)
+CORS(api)
 
 
 @api.route("/check/<string:url1>/<string:url2>")
