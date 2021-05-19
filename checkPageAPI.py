@@ -7,8 +7,8 @@ TARGET_WORDS = ["바카라", "카지노", "이용약관"]
 
 
 app = Flask("checkPageAPI")
+CORS(app)
 api = Api(app)
-CORS(api)
 
 
 @api.route("/check/<string:url1>/<string:url2>")
