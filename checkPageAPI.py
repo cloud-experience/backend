@@ -3,7 +3,22 @@ from flask import Flask, request
 from flask_restx import Api, Resource
 from flask_cors import CORS, cross_origin
 
-TARGET_WORDS = ["바카라", "카지노", "이용약관"]
+TARGET_WORDS = [
+    "바카라",
+    "카지노",
+    "파워볼",
+    "사다리",
+    "슬롯",
+    "카지노",
+    "홀짝",
+    "블랙잭",
+    "홀덤",
+    "잭팟",
+    "오피",
+    "출근부",
+    "야동",
+    "이용약관",
+]
 
 
 app = Flask("checkPageAPI")
