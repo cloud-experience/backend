@@ -1,6 +1,6 @@
 import pymysql
 
-RDS_ENDPOINT = "database-2.cnr20hoyd3cu.ap-northeast-2.rds.amazonaws.com"
+RDS_ENDPOINT = "spamdb.cnr20hoyd3cu.ap-northeast-2.rds.amazonaws.com"
 RDS_PORT = 3306
 RDS_USER = "admin"
 RDS_PASSWORD = "password"
