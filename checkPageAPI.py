@@ -32,6 +32,3 @@ class main(Resource):
         url = f"{url1}/{url2}"
         data = checkPage(url, TARGET_WORDS)
         return data
-
-
-app.run(host="0.0.0.0", port=80)
